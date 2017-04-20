@@ -1,19 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="keyprtest.katkov.com.keyprtest.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <EditText android:id="@+id/main_wifi_name_et"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:layout_marginTop="30dp"
+              android:paddingLeft="10dp"
+              android:maxLines="1"
+              android:imeOptions="actionNext"
+              android:hint="@string/wifi_name"/>
 
-</android.support.constraint.ConstraintLayout>
+    <EditText android:id="@+id/main_latitude_et"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:layout_marginTop="10dp"
+              android:paddingLeft="10dp"
+              android:maxLines="1"
+              android:inputType="number"
+              android:imeOptions="actionNext"
+              android:hint="@string/latitude"/>
+
+    <EditText android:id="@+id/main_longitude_et"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:layout_marginTop="10dp"
+              android:paddingLeft="10dp"
+              android:maxLines="1"
+              android:inputType="number"
+              android:imeOptions="actionNext"
+              android:hint="@string/longitude"/>
+
+    <EditText android:id="@+id/main_radius_et"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:layout_marginTop="10dp"
+              android:paddingLeft="10dp"
+              android:maxLines="1"
+              android:inputType="number"
+              android:imeOptions="actionDone"
+              android:hint="@string/radius"/>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+        <Button android:id="@+id/main_start_watching_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorAccent"
+                android:text="@string/start_watching"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
