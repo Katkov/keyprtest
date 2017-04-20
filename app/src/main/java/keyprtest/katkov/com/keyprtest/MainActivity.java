@@ -3,10 +3,11 @@ package keyprtest.katkov.com.keyprtest;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private MainPresenter mMainPresenter;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         return this;
     }
 
+
     @Override
     public void showAlert(String message, DialogInterface.OnClickListener okClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         builder.setCancelable(false);
         builder.create().show();
     }
+
 
     @Override
     public void showConfirm(String message, DialogInterface.OnClickListener yesClickListener,
@@ -117,6 +121,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+            @NonNull int[] grantResults) {
+        mMainPresenter.checkIfPermissionsGrantedThenStartWatching(requestCode, grantResults);
+    }
+
+
     @OnClick(R.id.main_start_watching_btn)
     public void onStartWatching() {
         mMainPresenter.watch();
@@ -126,10 +137,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private void setUpNotice(boolean isInGeoFence) {
         if (isInGeoFence) {
             mNoticeTv.setText(getString(R.string.you_are_inside_zone));
-            mNoticeTv.setBackgroundColor(ContextCompat.getColor(this,R.color.colorGreen));
+            mNoticeTv.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGreen));
         } else {
             mNoticeTv.setText(getString(R.string.you_are_outside_zone));
-            mNoticeTv.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAccent));
+            mNoticeTv.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
         }
     }
 
@@ -138,11 +149,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         if (isStartedWatching) {
             mNoticeTv.setVisibility(View.VISIBLE);
             setUpNotice(isInGeoFence);
-            mStartWatchingBtn.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAccent));
+            mStartWatchingBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
             mStartWatchingBtn.setText(getString(R.string.stop_watching));
         } else {
             mNoticeTv.setVisibility(View.GONE);
-            mStartWatchingBtn.setBackgroundColor(ContextCompat.getColor(this,R.color.colorGreen));
+            mStartWatchingBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGreen));
             mStartWatchingBtn.setText(getString(R.string.start_watching));
         }
     }

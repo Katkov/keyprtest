@@ -10,10 +10,7 @@ import android.location.LocationManager;
 import android.net.wifi.WifiManager;
 import dagger.Module;
 import dagger.Provides;
-import keyprtest.katkov.com.keyprtest.KeyprLocationManager;
-import keyprtest.katkov.com.keyprtest.KeyprManager;
-import keyprtest.katkov.com.keyprtest.KeyprWifiManager;
-import keyprtest.katkov.com.keyprtest.Routing;
+import keyprtest.katkov.com.keyprtest.*;
 
 import javax.inject.Singleton;
 
@@ -92,6 +89,12 @@ public class ApplicationModule {
     @Singleton
     Routing provideRouting() {
         return new Routing();
+    }
+
+    @Provides
+    @Singleton
+    PermissionsManager providePermissionsManager() {
+        return new PermissionsManager();
     }
 
 }

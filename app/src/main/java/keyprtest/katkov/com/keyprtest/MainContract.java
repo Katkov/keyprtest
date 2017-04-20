@@ -3,6 +3,7 @@ package keyprtest.katkov.com.keyprtest;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
 
 
 /**
@@ -26,5 +27,6 @@ public class MainContract {
         void populate();
         void watch();
         void unSubscribe();
+        void checkIfPermissionsGrantedThenStartWatching(int requestCode, @NonNull int[] grantResults);
     }
 }
