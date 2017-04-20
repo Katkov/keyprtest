@@ -17,4 +17,10 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <!-- Error -->
+    <string name="latitude_error">Latitude should be between -90 and 90</string>
+    <string name="longitude_error">Longitude should be between -180 and 180</string>
+    <string name="wifi_name_error">Wifi Name cannot be empty</string>
+    <string name="radius_error">Radius cannot be not possitive</string>
+
 </resources>

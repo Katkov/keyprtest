@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import dagger.Module;
 import dagger.Provides;
+import keyprtest.katkov.com.keyprtest.KeyprManager;
 
 import javax.inject.Singleton;
 
@@ -42,6 +43,13 @@ public class ApplicationModule {
     @Singleton
     NotificationManager provideNotificationManager() {
         return (NotificationManager) mApplication.getSystemService(Context.NOTIFICATION_SERVICE);
+    }
+
+
+    @Provides
+    @Singleton
+    KeyprManager provideKeyprManager() {
+        return new KeyprManager();
     }
 
 }

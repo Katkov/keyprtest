@@ -17,12 +17,15 @@ public class MainContract {
         void showAlert(String message, DialogInterface.OnClickListener okClickListener);
         void showConfirm(String message, DialogInterface.OnClickListener yesClickListener,
                 DialogInterface.OnClickListener noClickListener);
+        void populateFields(KeyprModel model, boolean isInGeoFence);
+        KeyprModel readFields();
     }
 
     public interface Presenter {
-
+        void subscribe();
         void populate();
         void startWatching();
         void stopWatching();
+        void unSubscribe();
     }
 }

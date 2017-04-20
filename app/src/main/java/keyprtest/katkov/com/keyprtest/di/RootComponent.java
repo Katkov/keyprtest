@@ -2,6 +2,7 @@ package keyprtest.katkov.com.keyprtest.di;
 
 
 import dagger.Component;
+import keyprtest.katkov.com.keyprtest.KeyprManager;
 import keyprtest.katkov.com.keyprtest.MainPresenter;
 
 import javax.inject.Singleton;
@@ -11,7 +12,8 @@ import javax.inject.Singleton;
 @Component(modules = { ApplicationModule.class })
 public interface RootComponent {
 
-    //Presenters
     void inject(MainPresenter presenter);
+
+    void inject(KeyprManager manager);
 
 }
