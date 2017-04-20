@@ -8,16 +8,18 @@ import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
+import java.util.Observable;
 
 
 /**
  * Created by michaelkatkov on 4/20/17.
  */
 
-public class KeyprManager {
+public class KeyprManager extends Observable {
 
-    private static String DESIRED_MODEL = "desired_model";
-    private static String CURRENT_MODEL = "current_model";
+    private static String DESIRED_MODEL       = "desired_model";
+    private static String CURRENT_MODEL       = "current_model";
+    private static String IS_STARTED_WATCHING = "is_started_watching";
 
     @Inject
     SharedPreferences mPreferences;
@@ -25,6 +27,16 @@ public class KeyprManager {
 
     public KeyprManager() {
         KeyprApplication.getRootComponent().inject(this);
+    }
+
+
+    public void setIsStartedWatching(boolean isStartedWatching) {
+        mPreferences.edit().putBoolean(IS_STARTED_WATCHING, isStartedWatching).apply();
+    }
+
+
+    public boolean isStartedWatching() {
+        return mPreferences.getBoolean(IS_STARTED_WATCHING, false);
     }
 
 
@@ -44,6 +56,11 @@ public class KeyprManager {
     public void setCurrentModel(@NonNull KeyprModel model) {
         String jsonString = new Gson().toJson(model);
         mPreferences.edit().putString(CURRENT_MODEL, jsonString).apply();
+        if (isStartedWatching()) {
+            setChanged();
+            notifyObservers();
+            clearChanged();
+        }
     }
 
 
@@ -57,9 +74,7 @@ public class KeyprManager {
     public boolean isInGeoFence() {
         KeyprModel desiredModel = getDesiredModel();
         KeyprModel currentModel = getCurrentModel();
-        if (desiredModel == null)
-            return false;
-        if (currentModel == null)
+        if (desiredModel == null || currentModel == null)
             return false;
         return areWifiNamesMatches(desiredModel, currentModel) || isCurrentPointInLocation(desiredModel, currentModel);
     }

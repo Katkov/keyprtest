@@ -5,11 +5,11 @@
     <string name="wifi_name">Wi-Fi network name</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
-    <string name="radius">Radius</string>
+    <string name="radius">Radius in meters</string>
     <string name="start_watching">Start Watching</string>
     <string name="stop_watching">Stop Watching</string>
-    <string name="you_are_inside_zone">You are inside %s Geofence zone</string>
-    <string name="you_are_outside_zone">You are outside %s Geofence zone</string>
+    <string name="you_are_inside_zone">You are inside the Geofence zone</string>
+    <string name="you_are_outside_zone">You are outside the Geofence zone</string>
 
     <!-- Alerts -->
     <string name="alert">Alert</string>

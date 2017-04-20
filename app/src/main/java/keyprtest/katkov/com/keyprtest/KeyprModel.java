@@ -11,13 +11,4 @@ public class KeyprModel {
     public Double longitude;
     public Double radius;
 
-    public static KeyprModel create(String wifiName, Double latitude, Double longitude, Double radius) {
-        KeyprModel model = new KeyprModel();
-        model.wifiName = wifiName;
-        model.latitude = latitude;
-        model.longitude = longitude;
-        model.radius = radius;
-        return model;
-    }
-
 }

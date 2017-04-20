@@ -5,9 +5,15 @@ import android.app.Application;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.wifi.WifiManager;
 import dagger.Module;
 import dagger.Provides;
+import keyprtest.katkov.com.keyprtest.KeyprLocationManager;
 import keyprtest.katkov.com.keyprtest.KeyprManager;
+import keyprtest.katkov.com.keyprtest.KeyprWifiManager;
+import keyprtest.katkov.com.keyprtest.Routing;
 
 import javax.inject.Singleton;
 
@@ -34,6 +40,7 @@ public class ApplicationModule {
 
 
     @Provides
+    @Singleton
     public SharedPreferences provideSharedPreferences() {
         return mApplication.getSharedPreferences(mApplication.getApplicationInfo().name, Context.MODE_PRIVATE);
     }
@@ -48,8 +55,43 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
+    LocationManager provideLocationManager() {
+        return (LocationManager) mApplication.getSystemService(Context.LOCATION_SERVICE);
+    }
+
+
+    @Provides
+    @Singleton
+    WifiManager provideWifiManager() {
+        return (WifiManager) mApplication.getSystemService(Context.WIFI_SERVICE);
+    }
+
+
+    @Provides
+    @Singleton
     KeyprManager provideKeyprManager() {
         return new KeyprManager();
+    }
+
+
+    @Provides
+    @Singleton
+    KeyprLocationManager provideKeyprLocationManager() {
+        return new KeyprLocationManager();
+    }
+
+
+    @Provides
+    @Singleton
+    KeyprWifiManager provideKeyprWifiManager() {
+        return new KeyprWifiManager();
+    }
+
+
+    @Provides
+    @Singleton
+    Routing provideRouting() {
+        return new Routing();
     }
 
 }

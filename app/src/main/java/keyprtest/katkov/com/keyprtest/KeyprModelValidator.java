@@ -18,6 +18,7 @@ public class KeyprModelValidator {
 
         public boolean isValid;
         public List<String> errors;
+        public KeyprModel model;
 
         public Result() {
             errors = new ArrayList<>();
@@ -26,6 +27,7 @@ public class KeyprModelValidator {
 
     public static Result validate(Context context, @NonNull KeyprModel model) {
         Result result = new Result();
+        result.model = model;
         if (!isValidLatitude(model.latitude)) result.errors.add(context.getString(R.string.latitude_error));
         if (!isValidLongitude(model.longitude)) result.errors.add(context.getString(R.string.longitude_error));
         if (!isValidWifiName(model.wifiName)) result.errors.add(context.getString(R.string.wifi_name_error));
