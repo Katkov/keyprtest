@@ -44,4 +44,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:8.1.0'
 
     testCompile 'junit:junit:4.12'
+    testCompile "org.robolectric:robolectric:3.3.2"
 }

@@ -26,12 +26,16 @@ public class KeyprApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initComponents();
+        initComponent();
     }
 
 
-    private void initComponents() {
+    void initComponent() {
         ApplicationModule applicationModule = new ApplicationModule(this);
         mRootComponent = DaggerRootComponent.builder().applicationModule(applicationModule).build();
+    }
+
+    ApplicationModule getApplicationModule() {
+        return new ApplicationModule(this);
     }
 }
